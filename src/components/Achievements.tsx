@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { achievements, certifications, type Certification, type ProfileId } from '../data/portfolio';
 import { EASE, SectionHeading, Tilt } from './fx';
@@ -24,29 +25,29 @@ export default function Achievements({ profileId }: { profileId: ProfileId }) {
   const [certCategory, setCertCategory] = useState<string>('all');
 
   const visibleAchievements = profileId === 'speaker'
-    ? achievements.filter((a) => ['gndec-68th-foundation-day', 'declamation-awake-foundation', 'lohar-trust-honours', 'islamia-school-felicitation', 'school-felicitation-award', 'cml-case-study', 'smart-traffic-ideathon', 'rebrand-challenge', 'think-a-thon-2026', 'jpal-digital-wellness'].includes(a.id))
+    ? achievements.filter((a) => ['declamation-conversa-first', 'gndec-68th-foundation-day', 'declamation-awake-foundation', 'lohar-trust-honours', 'islamia-school-felicitation', 'school-felicitation-award', 'cml-case-study', 'smart-traffic-ideathon', 'rebrand-challenge', 'think-a-thon-2026', 'jpal-digital-wellness'].includes(a.id))
     : profileId === 'developer'
-      ? achievements.filter((a) => ['web-forge-2026', 'thinknext-ai-ml', 'arya-tech-disha', 'think-a-thon-2026', 'gndec-hackathon-sprint', 'iete-code-debugging', 'coding-ninjas-hackathon', 'smart-traffic-ideathon', 'iot-international-webinar', 'python-infosys', 'be10x-ai'].includes(a.id))
+      ? achievements.filter((a) => ['web-forge-2026', 'thinknext-ai-ml', 'arya-tech-disha', 'declamation-conversa-first', 'think-a-thon-2026', 'gndec-hackathon-sprint', 'iete-code-debugging', 'coding-ninjas-hackathon', 'smart-traffic-ideathon', 'iot-international-webinar', 'python-infosys', 'be10x-ai'].includes(a.id))
       : profileId === 'creative'
-        ? achievements.filter((a) => ['cml-case-study', 'rebrand-challenge', 'smart-traffic-ideathon', 'lohar-trust-honours', 'be10x-ai'].includes(a.id))
+        ? achievements.filter((a) => ['declamation-conversa-first', 'cml-case-study', 'rebrand-challenge', 'smart-traffic-ideathon', 'lohar-trust-honours', 'be10x-ai'].includes(a.id))
         : achievements;
 
   const visibleCertifications = profileId === 'speaker'
-    ? certifications.filter((c) => c.issuer.includes('Club') || c.issuer.includes('J-PAL') || c.issuer.includes('Awake') || c.issuer.includes('Multi-Faceted') || c.issuer.includes('Inter-College') || c.issuer.includes('Lohar') || c.issuer.includes('Islamia') || c.issuer.includes('Guru Nanak') || c.issuer.includes('School') || ['web-forge-2026', 'thinknext-ai-ml-2025', 'cml-case-study-2025', 'gndec-athletics-100m'].includes(c.id))
+    ? certifications.filter((c) => c.issuer.includes('Club') || c.issuer.includes('J-PAL') || c.issuer.includes('Awake') || c.issuer.includes('Conversa') || c.issuer.includes('Azad') || c.issuer.includes('Multi-Faceted') || c.issuer.includes('Inter-College') || c.issuer.includes('Lohar') || c.issuer.includes('Islamia') || c.issuer.includes('Guru Nanak') || c.issuer.includes('School') || ['declamation-conversa-1st', 'web-forge-2026', 'thinknext-ai-ml-2025', 'cml-case-study-2025', 'gndec-athletics-100m'].includes(c.id))
     : profileId === 'developer'
-      ? certifications.filter((c) => ['web-forge-2026', 'thinknext-ai-ml-2025', 'cml-case-study-2025', 'gndec-athletics-100m', 'thinkathon-2026', 'gndec-athletics-cert', 'arya-college-tech-disha', 'coding-ninjas-summer-hack', 'iete-debugging-2024', 'ideathon-2024', 'iot-webinar-2024', 'infosys-python-foundation', 'infosys-python-p2', 'infosys-python-p1', 'be10x-ai', 'mind-wrapping-award'].includes(c.id))
+      ? certifications.filter((c) => ['declamation-conversa-1st', 'web-forge-2026', 'thinknext-ai-ml-2025', 'cml-case-study-2025', 'gndec-athletics-100m', 'thinkathon-2026', 'gndec-athletics-cert', 'arya-college-tech-disha', 'coding-ninjas-summer-hack', 'iete-debugging-2024', 'ideathon-2024', 'iot-webinar-2024', 'infosys-python-foundation', 'infosys-python-p2', 'infosys-python-p1', 'be10x-ai'].includes(c.id))
       : profileId === 'creative'
-        ? certifications.filter((c) => ['cml-case-study-2025', 'web-forge-2026', 'thinknext-ai-ml-2025', 'rebrand-2025', 'ideathon-2024', 'be10x-ai', 'gndec-athletics-100m'].includes(c.id))
+        ? certifications.filter((c) => ['declamation-conversa-1st', 'cml-case-study-2025', 'web-forge-2026', 'thinknext-ai-ml-2025', 'rebrand-2025', 'ideathon-2024', 'be10x-ai', 'gndec-athletics-100m'].includes(c.id))
         : certifications;
 
   const filteredCertifications = certCategory === 'all'
     ? visibleCertifications
     : certCategory === 'featured'
-      ? visibleCertifications.filter((c) => ['web-forge-2026', 'thinknext-ai-ml-2025', 'cml-case-study-2025', 'gndec-athletics-100m', 'thinkathon-2026'].includes(c.id))
+      ? visibleCertifications.filter((c) => ['declamation-conversa-1st', 'web-forge-2026', 'thinknext-ai-ml-2025', 'cml-case-study-2025', 'gndec-athletics-100m', 'thinkathon-2026'].includes(c.id))
       : certCategory === 'tech'
         ? visibleCertifications.filter((c) => ['web-forge-2026', 'thinknext-ai-ml-2025', 'thinkathon-2026', 'infosys-python-foundation', 'infosys-python-p2', 'infosys-python-p1', 'be10x-ai', 'iot-webinar-2024', 'coding-ninjas-summer-hack', 'iete-debugging-2024'].includes(c.id))
         : certCategory === 'podium'
-          ? visibleCertifications.filter((c) => ['cml-case-study-2025', 'arya-college-tech-disha', 'declamation-we-are-one', 'mind-wrapping-award'].includes(c.id))
+          ? visibleCertifications.filter((c) => ['declamation-conversa-1st', 'cml-case-study-2025', 'arya-college-tech-disha', 'declamation-we-are-one'].includes(c.id))
           : certCategory === 'athletics'
             ? visibleCertifications.filter((c) => ['gndec-athletics-100m', 'gndec-athletics-cert'].includes(c.id))
             : visibleCertifications;
@@ -57,13 +58,44 @@ export default function Achievements({ profileId }: { profileId: ProfileId }) {
     setModalIndex(idx >= 0 ? idx : 0);
   };
 
+  const achievementToCertMap: Record<string, string> = {
+    'declamation-conversa-first': 'declamation-conversa-1st',
+    'cml-case-study': 'cml-case-study-2025',
+    'thinknext-ai-ml': 'thinknext-ai-ml-2025',
+    'rebrand-challenge': 'rebrand-2025',
+    'smart-traffic-ideathon': 'ideathon-2024',
+    'jpal-digital-wellness': 'jpal-wellness-2024',
+    'think-a-thon-2026': 'thinkathon-2026',
+    'iot-international-webinar': 'iot-webinar-2024',
+    'python-infosys': 'infosys-python-foundation',
+    'arya-tech-disha': 'arya-college-tech-disha',
+    'declamation-awake-foundation': 'declamation-we-are-one',
+    'coding-ninjas-hackathon': 'coding-ninjas-summer-hack',
+    'iete-code-debugging': 'iete-debugging-2024',
+    'gndec-athletic': 'gndec-athletics-cert',
+    'gndec-athletics-100m': 'gndec-athletics-100m',
+    'web-forge-2026': 'web-forge-2026',
+    'be10x-ai': 'be10x-ai',
+  };
+
   const openAchievement = (a: (typeof visibleAchievements)[number]) => {
-    const match = visibleCertifications.find(
-      (c) => c.link === a.link || c.image === a.image || a.id.includes(c.id) || c.id.includes(a.id)
+    const targetCertId = achievementToCertMap[a.id];
+    const match = certifications.find(
+      (c) =>
+        (targetCertId && c.id === targetCertId) ||
+        c.id === a.id ||
+        (a.link && c.link === a.link) ||
+        (a.image && c.image === a.image)
     );
+
     if (match) {
-      setModalList(visibleCertifications);
-      const idx = visibleCertifications.indexOf(match);
+      const list = filteredCertifications.includes(match)
+        ? filteredCertifications
+        : visibleCertifications.includes(match)
+        ? visibleCertifications
+        : certifications;
+      setModalList(list);
+      const idx = list.indexOf(match);
       setModalIndex(idx >= 0 ? idx : 0);
     } else if (a.image) {
       const momentCert: Certification = {
@@ -117,8 +149,8 @@ export default function Achievements({ profileId }: { profileId: ProfileId }) {
                 data-cursor="link"
                 className="relative flex h-full min-h-[350px] cursor-pointer flex-col items-center overflow-hidden rounded-2xl bg-[radial-gradient(120%_80%_at_50%_0%,#2a1f10,#0d0b08_60%,#07070a)] px-5 pb-6 pt-8 text-center ring-1 ring-[#d9b46a]/20 transition duration-500 group-hover:ring-[#d9b46a]/60"
               >
-                <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d9b46a]/70 to-transparent" />
-                <div aria-hidden className="absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#d9b46a]/10 blur-3xl transition duration-700 group-hover:bg-[#d9b46a]/25" />
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#d9b46a]/70 to-transparent" />
+                <div aria-hidden className="pointer-events-none absolute -top-24 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-[#d9b46a]/10 blur-3xl transition duration-700 group-hover:bg-[#d9b46a]/25" />
                 <div className="relative flex items-center gap-1">
                   <Laurel side="l" />
                   <div className="px-1">
@@ -131,17 +163,17 @@ export default function Achievements({ profileId }: { profileId: ProfileId }) {
                 {a.date && <p className="relative mt-1 text-[11px] text-smoke">{a.date}</p>}
                 <p className="relative mt-3 text-[13px] leading-relaxed text-bone/70">{a.detail}</p>
 
-                {a.link && (
+                {(a.link || a.image) && (
                   <button
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       openAchievement(a);
                     }}
-                    data-cursor="link"
-                    className="relative mt-auto inline-flex min-h-10 items-center gap-1.5 pt-5 text-xs font-semibold tracking-wide text-[#d9b46a] underline decoration-[#d9b46a]/60 underline-offset-4 hover:text-white hover:decoration-white"
+                    data-cursor="view"
+                    className="relative mt-auto inline-flex min-h-10 items-center gap-1.5 pt-5 text-xs font-semibold tracking-wide text-[#d9b46a] underline decoration-[#d9b46a]/60 underline-offset-4 hover:text-white hover:decoration-white transition-colors cursor-pointer"
                   >
-                    {a.image?.startsWith('/assets/moments/') ? 'View moment ↗' : 'View certificate ↗'}
+                    {a.image?.includes('/moments/') ? 'View moment ↗' : 'View certificate ↗'}
                   </button>
                 )}
               </article>
@@ -295,19 +327,23 @@ export default function Achievements({ profileId }: { profileId: ProfileId }) {
         </div>
       )}
 
-      {/* Interactive Full-View Certificate & Moment Lightbox */}
-      <AnimatePresence>
-        {modalIndex !== null && modalList[modalIndex] && (
-          <CertificateModal
-            certificate={modalList[modalIndex]}
-            onClose={() => setModalIndex(null)}
-            onNext={modalList.length > 1 ? handleNext : undefined}
-            onPrev={modalList.length > 1 ? handlePrev : undefined}
-            currentIndex={modalIndex}
-            totalCount={modalList.length}
-          />
+      {/* Interactive Full-View Certificate & Moment Lightbox Portaled directly to document.body */}
+      {typeof document !== 'undefined' &&
+        createPortal(
+          <AnimatePresence>
+            {modalIndex !== null && modalList[modalIndex] && (
+              <CertificateModal
+                certificate={modalList[modalIndex]}
+                onClose={() => setModalIndex(null)}
+                onNext={modalList.length > 1 ? handleNext : undefined}
+                onPrev={modalList.length > 1 ? handlePrev : undefined}
+                currentIndex={modalIndex}
+                totalCount={modalList.length}
+              />
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </>
   );
 }

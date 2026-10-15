@@ -24,6 +24,7 @@ export default function FinalCTA({ onReplay, profileId }: { onReplay: () => void
     { label: 'LinkedIn', href: profile.links.linkedin, cursor: 'link' },
     { label: 'GitHub', href: profile.links.github, cursor: 'link' },
     { label: 'Email', href: `mailto:${profile.email}`, cursor: 'link' },
+    { label: 'Instagram', href: profile.links.instagram, cursor: 'link' },
   ];
 
   return (

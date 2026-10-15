@@ -31,8 +31,8 @@ function slidesForProfile(profileId: ProfileId): IntroSlide[] {
       {
         kicker: 'The Stage',
         title: 'Public Speaking',
-        lines: ['Presenter — Smart Traffic Management Ideathon', '5 moments sharing ideas with live audiences'],
-        chips: ['Technical Presentation', 'English', 'Hindi', 'Punjabi'],
+        lines: ['2nd Position — Declamation Contest sponsored by Radiance Foundation', 'Presenter — Smart Traffic Management Ideathon, GNDEC Data Science Club'],
+        chips: ['2nd Place', 'Technical Presentation', 'English', 'Hindi', 'Punjabi'],
       },
     ];
   }

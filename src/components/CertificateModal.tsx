@@ -242,9 +242,13 @@ export default function CertificateModal({
 
         {/* The Certificate Hero Display */}
         <div
-          className="relative flex h-full w-full items-center justify-center overflow-hidden"
-          onClick={certificate.image ? handleImageClick : undefined}
-          onMouseMove={certificate.image ? handleMouseMove : undefined}
+          className="relative flex h-full w-full items-center justify-center overflow-hidden cursor-default"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              if (isZoomed) setIsZoomed(false);
+              else onClose();
+            }
+          }}
         >
           {certificate.image ? (
             <motion.div
@@ -254,10 +258,18 @@ export default function CertificateModal({
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.3, ease: EASE }}
               className="relative flex items-center justify-center max-h-[82vh] max-w-[94vw]"
+              onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  if (isZoomed) setIsZoomed(false);
+                  else onClose();
+                }
+              }}
             >
               <motion.img
                 src={certificate.image}
                 alt={certificate.name}
+                onClick={handleImageClick}
+                onMouseMove={handleMouseMove}
                 style={{
                   transformOrigin: `${zoomOrigin.x}% ${zoomOrigin.y}%`,
                 }}

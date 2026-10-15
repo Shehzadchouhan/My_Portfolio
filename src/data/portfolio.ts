@@ -24,18 +24,19 @@ export const profile = {
     'A final-year B.Tech Computer Science and Engineering student at Guru Nanak Dev Engineering College (CGPA 8.5) and Full-Stack Developer. Beyond building web applications, I work with C++ and Python, applying my programming and problem-solving skills to software projects. I also create cinematic video edits and deliver technical presentations.',
   location: 'Malerkotla, Punjab, India',
   phone: '+91 9988059285',
-  email: 'shehzadchouna260@gmail.com',
+  email: 'mail-shehzadchouhan260@gmail.com',
   links: {
     linkedin: 'https://www.linkedin.com/in/shehzad23/',
     github: 'https://github.com/ShehzadChouhan',
+    instagram: 'https://www.instagram.com/shehzad_speaks?obrf=NGdrY3d6dXA2aDJs',
   },
-  resumePdf: '/assets/Mohd_Shehzad_Resume.pdf',
   portrait: {
     src: '/assets/portrait.jpg',
     srcSet: '/assets/portrait.jpg 720w',
     alt: 'Portrait of Mohd Shehzad',
   },
   interests: ['Software Engineering', 'System Design', 'Video Editing & Color Grading', 'Public Speaking & Teaching', 'Cinematic Storytelling', 'AI & Automation Tools'],
+  resumePdf: '/assets/Mohd_Shehzad_Resume.pdf',
 };
 
 export const education = [
@@ -44,7 +45,7 @@ export const education = [
     place: 'Ludhiana, Punjab',
     degree: 'Bachelor of Technology — Computer Science & Engineering',
     period: '2023 – 2027',
-    score: 'CGPA 8.5',
+    score: 'CGPA 8.6',
   },
   {
     school: 'Islamia Sen Sec School',
@@ -315,32 +316,58 @@ export const projects: Project[] = [
   },
   {
     id: 'video-editing-reel',
-    title: 'Cinematic Motion & Video Suite',
+    title: 'Video Editing & Visual Design',
     year: '2026',
-    genre: 'Video Editing • Color Science • Motion Design',
-    logline: 'Commercial editing reels, rhythm-matched cuts, color grading in DaVinci Resolve, and kinetic typography for digital storytelling.',
+    genre: 'Video Editing • AI Tools • Visual Design',
+    logline: 'Personal video edits made with CapCut and AI-powered tools, with ongoing exploration of color grading and visual design in Figma.',
     image: '/assets/portrait.jpg',
-    stack: ['Premiere Pro', 'DaVinci Resolve', 'After Effects', 'Figma'],
+    stack: ['CapCut', 'AI Editing Tools', 'Color Grading', 'Figma'],
     build: [
-      'Mastered 4K footage editing with rhythm-matched sound design, Foley layering, and pacing.',
-      'Developed custom LUT and curve balance workflows in DaVinci Resolve for consistent cinematic contrast.',
+      'Edited personal videos using CapCut and AI-powered editing tools.',
+      'Explored color grading and created visual designs with Figma.',
     ],
     features: [
-      'Multi-track timeline pacing and beat-matched cuts',
-      'ACES & Rec.709 color management and curve grading',
-      'Kinetic motion titles and lower-thirds compositing',
-      'Spatial sound design and audio stem leveling',
+      'Video editing with CapCut',
+      'AI-assisted editing workflows',
+      'Color-grading exploration',
+      'Visual design with Figma',
     ],
     metrics: [
-      { value: '4K DCI', label: 'cinematic master outputs' },
-      { value: '24 FPS', label: 'authentic film cadence' },
+      { value: 'CapCut', label: 'video editing' },
+      { value: 'Figma', label: 'visual design' },
     ],
     palette: monochrome2,
     telemetry: {
-      role: 'Lead Video Editor & Colorist',
-      stack: 'DaVinci Resolve • Premiere Pro • After Effects',
-      resolution: '4K DCI',
-      fps: '24.000 FPS',
+      role: 'Video Editing & Visual Design',
+      stack: 'CapCut • AI Editing Tools • Figma',
+    },
+  },
+  {
+    id: 'smart-traffic-speaking',
+    title: 'Smart Traffic Management Ideathon',
+    year: '2024',
+    genre: 'Public Speaking • Technical Presentation • Ideathon',
+    logline: 'Presented a Smart Traffic Management proposal at the GNDEC Data Science Club Ideathon, explaining an approach that combines IoT sensors with traffic-load distribution.',
+    image: '/assets/certificates/ideathon_2024.jpg',
+    coverImage: '/assets/certificates/ideathon_2024.jpg',
+    stack: ['Public Speaking', 'Technical Presentation', 'IoT', 'Smart City'],
+    build: [
+      'Developed and presented an architectural proposal for Smart Traffic Management.',
+      'Explained how IoT sensors and traffic-load distribution algorithms could support smarter traffic flow.',
+    ],
+    features: [
+      'Technical concept presentation at a college ideathon',
+      'IoT-based traffic monitoring proposal',
+      'Traffic-load distribution approach',
+    ],
+    metrics: [
+      { value: 'GNDEC', label: 'Data Science Club Ideathon' },
+      { value: 'Sep 2024', label: 'technical presentation' },
+    ],
+    palette: monochrome3,
+    telemetry: {
+      role: 'Speaker & Technical Presenter',
+      stack: 'Smart Traffic • IoT • System Design',
     },
   },
 ];
@@ -359,6 +386,17 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
   {
+    id: 'declamation-conversa-first',
+    title: '1st Position — Declamation Contest',
+    org: 'Conversa English Academy • Azad Foundation',
+    detail: 'Won 1st Position in the Grand Declamation Contest on "Plant Tree, Save Earth" at Islamia Senior Secondary School, Malerkotla. Presented by Azad Foundation and sponsored by Conversa English Academy for exceptional oratory and articulation.',
+    laurel: '1st Prize Champion',
+    image: '/assets/certificates/declamation_1st_prize_conversa.jpg',
+    link: '/assets/certificates/declamation_1st_prize_conversa.jpg',
+    date: '19-09-2022',
+    credentialId: '1st Position • Islamia Sr. Sec. School, Malerkotla',
+  },
+  {
     id: 'arya-tech-disha',
     title: '3rd Prize — C Debugging',
     org: 'Arya College • Tech Disha 2024',
@@ -372,8 +410,8 @@ export const achievements: Achievement[] = [
   {
     id: 'declamation-awake-foundation',
     title: '2nd Position — Declamation',
-    org: 'Awake Foundation • "WE ARE ONE"',
-    detail: 'Secured 2nd Position on the podium in the grand inter-school and college Declamation Contest competing among 510+ participants from 51+ institutions before 5,100+ attendees.',
+    org: 'Radiance Foundation • "WE ARE ONE"',
+    detail: 'Secured 2nd Position in the grand inter-school and college Declamation Contest hosted by Awake Foundation and sponsored by Radiance Foundation, competing among 510+ participants from 51+ institutions.',
     laurel: 'Podium Speaker',
     image: '/assets/certificates/declamation_2nd_prize.jpg',
     link: '/assets/certificates/declamation_2nd_prize.jpg',
@@ -470,10 +508,10 @@ export const achievements: Achievement[] = [
   },
   {
     id: 'thinknext-ai-ml',
-    title: 'Grade A — AI & ML Training',
+    title: 'Jarvis AI Assistant',
     org: 'ThinkNEXT Technologies (ISO 9001:2015)',
-    detail: 'Completed institutional industrial training in AI & ML using Python with Grade A (Outstanding), building predictive models and ML pipelines.',
-    laurel: 'Grade A Outstanding',
+    detail: 'Created Jarvis AI Assistant, an AI and machine-learning project, during industrial training in Python at ThinkNEXT Technologies. Completed the program with Grade A (Outstanding).',
+    laurel: 'AI & ML Project',
     image: '/assets/certificates/thinknext_ai_ml_training_grade_a.jpg',
     link: '/assets/certificates/thinknext_ai_ml_training_grade_a.jpg',
     date: 'June – July 2025',
@@ -525,9 +563,9 @@ export const achievements: Achievement[] = [
   },
   {
     id: 'islamia-school-felicitation',
-    title: 'Alma Mater Excellence Shield',
+    title: '12th Grade 89% Honor & Outstanding Student Award',
     org: 'Islamia Sr. Sec. School, Malerkotla',
-    detail: 'Felicitated with an honor shield on stage by the Principal and faculty at Islamia Senior Secondary School (Estd. 1924) in honor of achieving top-tier academic scores (89% 12th Non-Med, 88.6% 10th) and state declamation honors.',
+    detail: 'Received an academic honor for scoring 89% in 12th grade and a separate Outstanding Student award at Islamia Senior Secondary School.',
     laurel: 'Alma Mater Honor',
     image: '/assets/moments/islamia_school_felicitation_ceremony.jpg',
     link: '/assets/moments/islamia_school_felicitation_ceremony.jpg',
@@ -641,7 +679,7 @@ export const skillCategories: SkillCategory[] = [
     subtitle: 'Mainstage communication and storytelling',
     skills: [
       { name: 'Technical Presentation', mono: 'TP', note: 'Ideathon Finalist' },
-      { name: 'Analytical Thinking', mono: 'AT', note: 'Mind Wrapping 3rd' },
+      { name: 'Analytical Thinking', mono: 'AT', note: 'Code Debugging 3rd' },
       { name: 'Communication', mono: 'Cm', note: 'English, Hindi, Punjabi' },
     ],
   },
@@ -659,6 +697,7 @@ export type Season = {
     tags: string[];
     runtime: string;
     palette: Palette;
+    coverImage?: string;
   }[];
 };
 
@@ -671,11 +710,12 @@ export const seasons: Season[] = [
     episodes: [
       {
         code: 'S01 E01',
-        title: 'The 89% Milestone & Alma Mater Shield',
-        description: 'Completed Senior Secondary education with 89% distinction and was awarded the Alma Mater Excellence Shield at Islamia Sen Sec School, Malerkotla.',
-        tags: ['Academic Honors', '89% Non-Med', 'Islamia School', 'Alma Mater Shield'],
+        title: '12th Grade: 89% Academic Honor & Outstanding Student',
+        description: 'Received an academic honor for scoring 89% in 12th grade and a separate Outstanding Student award at Islamia Senior Secondary School, Malerkotla.',
+        tags: ['89% Academic Honor', 'Outstanding Student', '12th Grade', 'Islamia School'],
         runtime: '2021 – 2023',
         palette: monochrome1,
+        coverImage: '/assets/moments/islamia_school_felicitation_ceremony.jpg',
       },
       {
         code: 'S01 E02',
@@ -687,11 +727,12 @@ export const seasons: Season[] = [
       },
       {
         code: 'S01 E03',
-        title: 'Declamation Podium & Youth Honors',
-        description: 'Secured 2nd Position in the state-level Declamation Contest before 5,100+ attendees and received state recognition at the All India Lohar Trust Honours Ceremony.',
-        tags: ['Declamation', 'Awake Foundation', 'Lohar Trust Honor', 'Public Speaking'],
-        runtime: '2023 – 2024',
+        title: 'Declamation 1st & 2nd Podiums & Youth Honors',
+        description: 'Won 1st Position in the Grand Declamation Contest by Conversa & Azad Foundation, secured 2nd Position in the state-level contest before 5,100+ attendees, and received state recognition at the All India Lohar Trust Honours Ceremony.',
+        tags: ['1st Place Declamation', 'Conversa Academy', 'Awake Foundation', 'Lohar Trust Honor', 'Public Speaking'],
+        runtime: '2022 – 2024',
         palette: silver,
+        coverImage: '/assets/certificates/declamation_1st_prize_conversa.jpg',
       },
     ],
   },
@@ -776,8 +817,8 @@ export const seasons: Season[] = [
       {
         code: 'S04 E01',
         title: 'The Podium Triad',
-        description: 'Securing 3rd Prize in C Debugging at Arya College Tech Disha, 2nd Position in CML Case Study Making, and 3rd in Mind Wrapping problem solving.',
-        tags: ['Arya College 3rd', 'CML Case Study 2nd', 'Mind Wrapping', 'Podium'],
+        description: 'Securing 3rd Prize in C Debugging at Arya College Tech Disha and 2nd Position in CML Case Study Making.',
+        tags: ['Arya College 3rd', 'CML Case Study 2nd', 'Podium'],
         runtime: '2024 – 2025',
         palette: monochrome1,
       },
@@ -843,9 +884,10 @@ export const topPicks: TopPick[] = [
   { label: 'Podium Finish', title: '3rd Place C Debugging', detail: 'Tech Disha 2024 at Arya College Ludhiana', palette: monochrome1 },
   { label: 'Podium Case Study', title: '2nd Place Case Study', detail: 'Center for Multi-Faceted Learning (CML GNDEC)', palette: silver },
   { label: 'The FinTech App', title: 'Track Expenser', detail: 'Bilingual finance dashboard with WhatsApp expense capture', palette: monochrome3 },
-  { label: 'Stage Presentation', title: 'Smart Traffic Ideathon', detail: 'Mainstage technical proposal to judges', palette: monochrome1 },
-  { label: 'Alma Mater Shield', title: 'Islamia School Award', detail: 'Academic excellence shield presented by Principal & faculty', palette: monochrome2 },
-  { label: 'Industrial Training', title: 'ThinkNEXT AI & ML (Grade A)', detail: 'Machine learning & neural pipelines certified with Grade A', palette: silver },
+  { label: 'Data Science Club Ideathon', title: 'Smart Traffic Proposal', detail: 'Presented an IoT-based traffic management concept at GNDEC', palette: monochrome1 },
+  { label: '12th Grade 89% Honor', title: 'Outstanding Student', detail: 'Academic honor and separate Outstanding Student award', palette: monochrome2 },
+  { label: 'Declamation Champion', title: '1st Place Declamation', detail: 'Conversa English Academy & Azad Foundation at Islamia School', palette: silver },
+  { label: 'ThinkNEXT AI & ML', title: 'Jarvis AI Assistant', detail: 'AI and machine-learning project built during Grade A training', palette: silver },
 ];
 
 export type IntroSlide = { kicker: string; title: string; lines: string[]; chips?: string[] };
@@ -855,19 +897,19 @@ export const introSlides: IntroSlide[] = [
     kicker: 'Education',
     title: 'B.Tech · Computer Science',
     lines: ['Guru Nanak Dev Engineering College (GNDEC), Ludhiana', '2023 – 2027'],
-    chips: ['CGPA 8.5', '12th Grade: 89%', '10th Grade: 87%'],
+    chips: ['CGPA 8.5', 'Class Topper: Grades 1–12', '12th Grade: 89%', '10th Grade: 87%'],
   },
   {
     kicker: 'Engineering',
-    title: 'Frontend & Web Systems',
-    lines: ['HTML5, CSS3, JavaScript · C++, Python', 'Responsive layouts, state persistence, clean DOM engines'],
-    chips: ['HTML5', 'CSS3', 'JavaScript', 'C++', 'Python'],
+    title: 'Software Engineering & Development',
+    lines: ['C++, Python, JavaScript · Data Structures & Problem Solving', 'Full-stack applications, APIs, databases, and interactive systems'],
+    chips: ['C++', 'Python', 'JavaScript', 'Full-Stack', 'APIs & Databases'],
   },
   {
     kicker: 'The Creative Craft',
-    title: 'Video Editor & Colorist',
-    lines: ['Pacing, rhythm-matched cutting, DaVinci Resolve color science', 'Motion graphics, spatial audio design and Foley layering'],
-    chips: ['Video Editing', 'Color Grading', 'Premiere Pro', 'Figma'],
+    title: 'Video Editing & Visual Design',
+    lines: ['Editing videos with CapCut and AI-powered tools', 'Exploring color grading and creating designs in Figma'],
+    chips: ['CapCut', 'AI Editing Tools', 'Color Grading', 'Figma'],
   },
   {
     kicker: 'Originals',
@@ -882,8 +924,9 @@ export const introSlides: IntroSlide[] = [
     kicker: 'The Stage',
     title: 'Podium & Keynotes',
     lines: [
+      '1st Position — Grand Declamation Contest (Conversa & Azad Foundation)',
+      '2nd Position — Declamation Contest ("WE ARE ONE", 5,100+ Audience)',
       'THINK-A-THON 2026 — 8-Hour Inter-College Hackathon',
-      '3rd Position — Mind Wrapping (Inter-College)',
       'Presenter — Smart Traffic Management Ideathon',
       'Contributor — J-PAL South Asia (Columbia/Stanford/UIUC Study)',
     ],
@@ -902,11 +945,52 @@ export const introSlides: IntroSlide[] = [
 ];
 
 export type ProfileId = 'shehzad' | 'recruiter' | 'developer' | 'creative' | 'speaker';
-export type SectionId = 'about' | 'journey' | 'originals' | 'picks' | 'skills' | 'moments' | 'story';
+export type SectionId = 'about' | 'originals' | 'picks' | 'skills' | 'moments' | 'story';
+
+export interface RoleResumePdfInfo {
+  url: string;
+  filename: string;
+  title: string;
+  label: string;
+}
+
+export const roleResumePdfs: Record<ProfileId, RoleResumePdfInfo> = {
+  shehzad: {
+    url: '/assets/Mohd_Shehzad_Resume.pdf',
+    filename: 'Mohd_Shehzad_Resume.pdf',
+    title: 'Master Recruiter Resume',
+    label: 'Master Resume',
+  },
+  recruiter: {
+    url: '/assets/Mohd_Shehzad_Recruiter_Resume.pdf',
+    filename: 'Mohd_Shehzad_Recruiter_Resume.pdf',
+    title: 'Master Recruiter Resume',
+    label: 'Recruiter Resume',
+  },
+  developer: {
+    url: '/assets/Mohd_Shehzad_Developer_Resume.pdf',
+    filename: 'Mohd_Shehzad_Developer_Resume.pdf',
+    title: 'ATS Developer Resume',
+    label: 'Developer Resume',
+  },
+  speaker: {
+    url: '/assets/Mohd_Shehzad_Speaker_Resume.pdf',
+    filename: 'Mohd_Shehzad_Speaker_Resume.pdf',
+    title: 'Speaker & STEM Educator Resume',
+    label: 'Speaker Resume',
+  },
+  creative: {
+    url: '/assets/Mohd_Shehzad_Resume.pdf',
+    filename: 'Mohd_Shehzad_Resume.pdf',
+    title: 'Master Resume',
+    label: 'Master Resume',
+  },
+};
 
 export function getProjectsForProfile(profileId: ProfileId): Project[] {
-  if (profileId === 'developer') return projects.filter((project) => project.id !== 'video-editing-reel');
+  if (profileId === 'developer') return projects.filter((project) => !['video-editing-reel', 'smart-traffic-speaking'].includes(project.id));
   if (profileId === 'creative') return projects.filter((project) => project.id === 'video-editing-reel');
+  if (profileId === 'speaker') return projects.filter((project) => project.id === 'smart-traffic-speaking');
   return projects;
 }
 
@@ -920,23 +1004,23 @@ export const viewerProfiles: {
   {
     id: 'shehzad',
     name: 'Shehzad',
-    blurb: 'The full series, in order',
+    blurb: 'The full portfolio, in order',
     color: '#ffffff',
-    order: ['about', 'journey', 'originals', 'picks', 'skills', 'moments', 'story'],
+    order: ['about', 'originals', 'picks', 'skills', 'moments', 'story'],
   },
   {
     id: 'recruiter',
     name: 'Recruiter',
     blurb: 'Resume, achievements & skills first',
     color: '#e4e4e7',
-    order: ['story', 'moments', 'skills', 'originals', 'about', 'journey', 'picks'],
+    order: ['story', 'moments', 'skills', 'originals', 'about', 'picks'],
   },
   {
     id: 'developer',
     name: 'Developer',
     blurb: 'Software projects, coding skills & engineering',
     color: '#d4d4d8',
-    order: ['originals', 'skills'],
+    order: ['originals', 'skills', 'story', 'moments'],
   },
   {
     id: 'creative',
@@ -947,10 +1031,10 @@ export const viewerProfiles: {
   },
   {
     id: 'speaker',
-    name: 'Public Speaker',
-    blurb: 'Public speaking, presentations & stage moments',
+    name: 'Public Speaker & Teacher',
+    blurb: 'Public speaking, teaching, presentations & stage moments',
     color: '#ffffff',
-    order: ['moments', 'skills'],
+    order: ['originals', 'moments', 'story', 'skills'],
   },
 ];
 
@@ -961,6 +1045,7 @@ export type Episode = {
   tags: string[];
   runtime: string;
   palette: Palette;
+  coverImage?: string;
 };
 
 export const experience = [
@@ -1022,7 +1107,7 @@ export const certifications: Certification[] = [
     id: 'thinknext-ai-ml-2025',
     issuer: 'ThinkNEXT Technologies (ISO 9001:2015)',
     name: 'Industrial Training: AI & ML using Python (Grade A Outstanding)',
-    detail: 'Successfully completed the intensive 1-Month Industrial Training Program in AI & ML using Python from 23rd June to 23rd July 2025, evaluated with Grade A (Outstanding). Built ML regression, classification, and neural pipelines.',
+    detail: 'Successfully completed the intensive 1-Month Industrial Training Program in AI & ML using Python from 23rd June to 23rd July 2025, evaluated with Grade A (Outstanding). Created Jarvis AI Assistant as an AI and machine-learning project during the training.',
     date: '23-07-2025',
     image: '/assets/certificates/thinknext_ai_ml_training_grade_a.jpg',
     link: '/assets/certificates/thinknext_ai_ml_training_grade_a.jpg',
@@ -1200,10 +1285,24 @@ export const certifications: Certification[] = [
     tags: ['C Programming', 'Code Debugging', '3rd Prize', 'Tech Disha', 'Podium'],
   },
   {
+    id: 'declamation-conversa-1st',
+    issuer: 'Conversa English Academy • Azad Foundation',
+    name: 'Declamation Contest (Plant Tree, Save Earth) — 1st Position',
+    detail: 'Awarded 1st Position in the Grand Declamation Contest on the theme "Plant Tree, Save Earth" held on September 19, 2022, at Islamia Senior Secondary School, Malerkotla. Presented by Azad Foundation (Chairman M.A. Naaz) and sponsored by Conversa English Academy (Managing Director Abdul Jabbar), recognized for commanding oratorical fluency, rhetoric, and stage articulation.',
+    date: '19-09-2022',
+    image: '/assets/certificates/declamation_1st_prize_conversa.jpg',
+    link: '/assets/certificates/declamation_1st_prize_conversa.jpg',
+    credentialId: '1st Position • Islamia Sr. Sec. School • Malerkotla',
+    type: 'Winner (1st Position Champion)',
+    laurel: '1st Prize Declamation',
+    tags: ['Public Speaking', 'Declamation', '1st Position', 'Oratory', 'Azad Foundation', 'Conversa English Academy'],
+    signatories: ['M.A. Naaz (Chairman, Azad Foundation)', 'Abdul Jabbar (Managing Director, Conversa English Academy)'],
+  },
+  {
     id: 'declamation-we-are-one',
-    issuer: 'Awake Foundation (Regd.) Malerkotla',
+    issuer: 'Radiance Foundation • "WE ARE ONE"',
     name: 'Declamation Contest "WE ARE ONE" — 2nd Position',
-    detail: 'Awarded 2nd Position in the grand Declamation Contest organized by Awake Foundation and sponsored by Radiance Institute of Language, competing across 51+ schools/colleges with 510+ participants.',
+    detail: 'Awarded 2nd Position in the grand Declamation Contest hosted by Awake Foundation and sponsored by Radiance Foundation, competing across 51+ schools/colleges with 510+ participants.',
     date: 'Islamia Sen. Sec. School',
     image: '/assets/certificates/declamation_2nd_prize.jpg',
     link: '/assets/certificates/declamation_2nd_prize.jpg',
@@ -1211,7 +1310,7 @@ export const certifications: Certification[] = [
     type: 'Podium Award (2nd Position)',
     laurel: 'Podium Speaker',
     tags: ['Declamation', 'Public Speaking', '2nd Position', 'Oratory', 'Podium'],
-    signatories: ['M.A. Naaz (Project Director)', 'Mohd. Shahid (Managing Director, Radiance Institute)'],
+    signatories: ['M.A. Naaz (Project Director)', 'Mohd. Shahid (Managing Director, Radiance Foundation)'],
   },
   {
     id: 'coding-ninjas-summer-hack',
@@ -1255,17 +1354,6 @@ export const certifications: Certification[] = [
     tags: ['Athletics', 'Long Jump', '64th Meet', 'GNDEC Sports'],
     signatories: ['Dr. Gunjan Bhardwaj (Secretary Sports)', 'Dr. J.S. Grewal (President Sports)', 'Dr. Sehijpal Singh (Principal)'],
   },
-  {
-    id: 'mind-wrapping-award',
-    issuer: 'Inter-College Competition',
-    name: 'Mind Wrapping 3rd Position Award',
-    detail: 'Podium finish securing 3rd place among top engineering colleges in high-stakes algorithmic reasoning, puzzles, and problem solving.',
-    date: '2024',
-    link: 'https://www.linkedin.com/in/shehzad23/',
-    type: 'Podium Award',
-    laurel: 'Podium Finish',
-    tags: ['Algorithmic Logic', 'Problem Solving', 'Podium', 'Inter-College'],
-  },
 ];
 
 export const skillEvidence: Record<string, string[]> = {
@@ -1274,20 +1362,19 @@ export const skillEvidence: Record<string, string[]> = {
   'JavaScript': ['Track Expenser', 'Taskly', 'Coding Ninjas Summer Hack', 'Web Forge 2026'],
   'Responsive Design': ['ZID Fitness Zone', 'HostelEase', 'Shudh Loha Business Site', 'Web Forge 2026'],
   'Supabase': ['Shudh Loha Business Site', 'Track Expenser'],
-  'C++': ['Arya College Tech Disha (3rd Prize in C)', 'IETE Code Debugging', 'Mind Wrapping 3rd Place', 'THINK-A-THON 2026'],
+  'C++': ['Arya College Tech Disha (3rd Prize in C)', 'IETE Code Debugging (3rd Place)', 'THINK-A-THON 2026'],
   'Python': ['ThinkNEXT Industrial Training (Grade A)', 'Infosys Python Foundation (Capstone)', 'Infosys Python Part 1 & 2', 'Data Science & Automation'],
   'Video Editing': ['Cinematic Motion Suite', '4K Commercial Reels'],
   'Color Grading': ['DaVinci Resolve Studio', 'ACES Color Management'],
   'Figma UI/UX': ['ZID Fitness Zone', 'RE:BRAND Strategy Challenge', 'Modern Wireframes'],
   'Sound Design': ['Foley Layering', 'Audio Stem Balancing'],
-  'Technical Presentation': ['GNDEC 68th Foundation Day Stage Honor', 'Smart Traffic Management Ideathon', 'RE:BRAND Pitch Presentation', 'Declamation Contest 2nd Position', 'All India Lohar Trust Honours Ceremony'],
+  'Technical Presentation': ['Declamation Contest 1st Position (Conversa)', 'GNDEC 68th Foundation Day Stage Honor', 'Smart Traffic Management Ideathon', 'RE:BRAND Pitch Presentation', 'Declamation Contest 2nd Position', 'All India Lohar Trust Honours Ceremony'],
   'Analytical Thinking': ['CML Case Study 2nd Position', 'Arya College 3rd Prize C Debugging', 'THINK-A-THON 2026 Hackathon', 'J-PAL Digital Wellness Study', 'IETE Code Debugging'],
-  'Communication': ['Declamation Contest 2nd Position (Awake Foundation)', 'GNDEC 68th Foundation Day Stage Honor', 'Alma Mater Excellence Shield', 'English, Hindi, Punjabi Fluency'],
+  'Communication': ['Declamation Contest 1st Position (Conversa English Academy)', 'Declamation Contest 2nd Position (Awake Foundation)', 'GNDEC 68th Foundation Day Stage Honor', 'Alma Mater Excellence Shield', 'English, Hindi, Punjabi Fluency'],
 };
 
 export const sectionMeta: Record<SectionId, { nav: string; card: string; meta: string; palette: Palette }> = {
   about: { nav: 'About', card: 'About Me', meta: 'The Pilot • Education & Background', palette: monochrome1 },
-  journey: { nav: 'Journey', card: 'My Journey', meta: `${seasons.length} Seasons • ${seasons.reduce((n, s) => n + s.episodes.length, 0)} Episodes`, palette: monochrome2 },
   originals: { nav: 'Originals', card: 'My Projects', meta: `${projects.length} Originals • Code & Film`, palette: silver },
   picks: { nav: 'Top Picks', card: 'Top Picks', meta: 'Top 10 portfolio highlights', palette: monochrome3 },
   skills: { nav: 'Skills', card: 'My Skills', meta: `${skillCategories.length} Categories`, palette: monochrome1 },

@@ -8,7 +8,7 @@ import { EASE, RevealText } from './fx';
 import { PosterBackdrop } from './Poster';
 import { RailButtons } from './Rail';
 
-const GLYPHS: Record<SectionId, string> = { about: 'S', journey: 'S01', originals: '3', picks: '10', skills: '{ }', moments: '★', story: 'CV' };
+const GLYPHS: Record<SectionId, string> = { about: 'S', originals: '3', picks: '10', skills: '{ }', moments: '★', story: 'CV' };
 const FOCUSED_META: Partial<Record<ProfileId, Partial<Record<SectionId, readonly [string, string]>>>> = {
   developer: {
     originals: ['My Projects', '7 software projects'],

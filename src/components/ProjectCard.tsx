@@ -25,11 +25,15 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
             }
           }}
           aria-label={`Open ${project.title}`}
-          className="focus-ring relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-white/10 transition duration-500 group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)] group-hover:ring-white/25 sm:aspect-[16/12] lg:aspect-auto lg:h-[66vh]"
+          className={`focus-ring relative overflow-hidden rounded-2xl ring-1 ring-white/10 transition duration-500 group-hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.8)] group-hover:ring-white/25 ${
+            project.coverImage
+              ? 'flex min-h-[620px] flex-col bg-ink-2 lg:min-h-[66vh]'
+              : 'aspect-[4/5] sm:aspect-[16/12] lg:aspect-auto lg:h-[66vh]'
+          }`}
         >
           <motion.div
             layoutId={`art-${project.id}`}
-            className={`overflow-hidden rounded-2xl ${project.coverImage ? 'absolute inset-x-0 top-0 h-[42%]' : 'absolute inset-0'}`}
+            className={`overflow-hidden ${project.coverImage ? 'relative h-56 w-full shrink-0 rounded-t-2xl sm:h-64' : 'absolute inset-0 rounded-2xl'}`}
           >
             <div className="absolute inset-0 transition-transform duration-[1.4s] ease-[var(--ease-cine)] group-hover:scale-[1.07]">
               <ProjectArt project={project} />
@@ -46,7 +50,11 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
             </>
           )}
 
-          <div className={`absolute inset-x-0 bottom-0 p-5 sm:p-7 [transform:translateZ(40px)] ${project.coverImage ? 'top-[42%] flex flex-col justify-center bg-ink-2' : ''}`}>
+          <div className={`p-5 sm:p-7 [transform:translateZ(40px)] ${
+            project.coverImage
+              ? 'relative flex flex-1 flex-col bg-ink-2'
+              : 'absolute inset-x-0 bottom-0'
+          }`}>
             <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-mist">{project.genre}</p>
             <motion.h3 layoutId={`title-${project.id}`} className="font-display text-[clamp(2.4rem,5vw,4.6rem)] leading-[0.88] tracking-wide text-bone">
               {project.title}

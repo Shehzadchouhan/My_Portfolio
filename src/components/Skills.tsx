@@ -5,20 +5,29 @@ import { EASE, SectionHeading } from './fx';
 
 const HUES = ['#ff3d5a', '#4cc9ff', '#46e3a8', '#ffb547', '#b98bff', '#ff8a5c', '#7ee0ff'];
 
-const speakingPhotos = [
+const speakingPhotos: {
+  src: string;
+  alt: string;
+  caption: string;
+  category: string;
+  detail: string;
+  contain?: boolean;
+}[] = [
   {
     src: '/assets/moments/gndec_68th_foundation_day_award.jpg',
     alt: 'Felicitated on the main auditorium stage on GNDEC 68th Foundation Day',
     caption: 'GNDEC 68th Foundation Day Stage Felicitation (April 08, 2024)',
     category: 'Stage Honor',
     detail: 'Felicitated on the main auditorium stage by Principal Dr. Sehijpal Singh and college dignitaries in celebration of GNDEC\'s 68th Foundation Day.',
+    contain: true,
   },
   {
     src: '/assets/moments/islamia_school_felicitation_ceremony.jpg',
-    alt: 'Conferred with Alma Mater Excellence Shield at Islamia Sr. Sec. School, Malerkotla',
-    caption: 'Alma Mater Excellence Shield — Islamia Sr. Sec. School',
+    alt: 'Receiving the 12th-grade 89% academic honor and separate Outstanding Student award at Islamia Senior Secondary School, Malerkotla',
+    caption: '12th Grade 89% Honor & Outstanding Student Award',
     category: 'Academic Distinction',
-    detail: 'Presented with an honor shield by the Principal and faculty at Islamia Senior Secondary School (Estd. 1924) celebrating top rank scoring and state declamation triumph.',
+    detail: 'Recognized for the 12th-grade 89% academic honor and a separate Outstanding Student award. The full photo is shown so everyone in the ceremony remains visible.',
+    contain: true,
   },
   {
     src: '/assets/moments/lohar_trust_honours_ceremony.jpg',
@@ -26,6 +35,7 @@ const speakingPhotos = [
     caption: 'State Honours Ceremony — All India Lohar Trust Punjab',
     category: 'Community Honor',
     detail: 'Conferred with an honorary memento and trophy at the state-level Honours Ceremony (اعزا زی تقریب) celebrating youth scholastic and leadership excellence.',
+    contain: true,
   },
   {
     src: '/IMG_20261015_114537.jpg',
@@ -174,7 +184,7 @@ export default function Skills({ profileId }: { profileId: ProfileId }) {
                     alt={photo.alt}
                     loading="lazy"
                     decoding="async"
-                    className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                    className={`h-full w-full ${photo.contain ? 'object-contain' : 'object-cover transition duration-700 group-hover:scale-[1.04]'}`}
                   />
                 </div>
                 <figcaption className="flex items-center justify-between px-4 py-3 text-xs font-medium text-mist">

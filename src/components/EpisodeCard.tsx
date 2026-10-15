@@ -16,9 +16,16 @@ export default function EpisodeCard({ episode, index }: { episode: Episode; inde
         <div className="flex h-full flex-col overflow-hidden rounded-xl bg-ink-2 ring-1 ring-white/10 transition duration-500 group-hover:ring-crimson-2/60">
           <div className="relative aspect-video overflow-hidden">
             <div className="absolute inset-0 transition-transform duration-[1.2s] ease-[var(--ease-cine)] group-hover:scale-110">
-              <PosterBackdrop palette={episode.palette}>
-                <span className="absolute -bottom-6 right-2 font-display text-[7.5rem] leading-none text-white/[0.09]">{ep}</span>
-              </PosterBackdrop>
+              {episode.coverImage ? (
+                <>
+                  <img src={episode.coverImage} alt={`${episode.title} ceremony`} className="h-full w-full object-cover" />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-black/20" />
+                </>
+              ) : (
+                <PosterBackdrop palette={episode.palette}>
+                  <span className="absolute -bottom-6 right-2 font-display text-[7.5rem] leading-none text-white/[0.09]">{ep}</span>
+                </PosterBackdrop>
+              )}
             </div>
             <div className="absolute left-4 top-4 flex items-center gap-2">
               <span className="rounded bg-black/50 px-2 py-0.5 text-[10px] font-bold tracking-[0.2em] text-bone backdrop-blur">{season}</span>

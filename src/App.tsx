@@ -10,7 +10,6 @@ import Hero from './components/Hero';
 import ContinueWatching from './components/ContinueWatching';
 import Scene from './components/Scene';
 import About from './components/About';
-import Seasons from './components/Seasons';
 import Originals from './components/Originals';
 import TopPicks from './components/TopPicks';
 import Skills from './components/Skills';
@@ -96,12 +95,11 @@ function Series() {
 
   const sections: Record<SectionId, ReactNode> = {
     about: <About />,
-    journey: <Seasons />,
     originals: <Originals onOpen={setProject} profileId={profileId} />,
     picks: <TopPicks />,
     skills: <Skills profileId={profileId} />,
     moments: <Achievements profileId={profileId} />,
-    story: <ResumeSection onView={() => setResumeOpen(true)} />,
+    story: <ResumeSection onView={() => setResumeOpen(true)} profileId={profileId} />,
   };
 
   return (
@@ -137,7 +135,7 @@ function Series() {
       <Suspense fallback={null}>
         <AnimatePresence>{playing && <PlayIntro key="intro" onClose={closeIntro} profileId={profileId} />}</AnimatePresence>
         <AnimatePresence>{project && <ProjectModal key="project" project={project} onClose={closeProject} onSwitch={setProject} profileId={profileId} />}</AnimatePresence>
-        <AnimatePresence>{resumeOpen && <ResumeModal key="resume" onClose={closeResume} />}</AnimatePresence>
+        <AnimatePresence>{resumeOpen && <ResumeModal key="resume" onClose={closeResume} profileId={profileId} />}</AnimatePresence>
       </Suspense>
 
       <AnimatePresence>
