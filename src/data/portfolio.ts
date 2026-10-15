@@ -854,8 +854,8 @@ export const introSlides: IntroSlide[] = [
   {
     kicker: 'Education',
     title: 'B.Tech · Computer Science',
-    lines: ['Guru Nanak Dev Engineering College (GNDEC), Ludhiana', 'Class of 2023 – 2027'],
-    chips: ['CGPA 8.6', '12th Grade: 89%'],
+    lines: ['Guru Nanak Dev Engineering College (GNDEC), Ludhiana', '2023 – 2027'],
+    chips: ['CGPA 8.5', '12th Grade: 89%', '10th Grade: 87%'],
   },
   {
     kicker: 'Engineering',
