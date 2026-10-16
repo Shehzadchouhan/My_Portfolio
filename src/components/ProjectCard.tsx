@@ -55,7 +55,14 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
               ? 'relative flex flex-1 flex-col bg-ink-2'
               : 'absolute inset-x-0 bottom-0'
           }`}>
-            <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-mist">{project.genre}</p>
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-mist">{project.genre}</p>
+              {project.videos && project.videos.length > 0 && (
+                <span className="inline-flex items-center gap-1 rounded-full border border-crimson/50 bg-crimson/20 px-2 py-0.5 text-[10px] font-bold tracking-wider text-crimson-2 backdrop-blur">
+                  <span className="text-[8px]">▶</span> {project.videos.length} {project.videos.length === 1 ? 'VIDEO' : 'VIDEOS'}
+                </span>
+              )}
+            </div>
             <motion.h3 layoutId={`title-${project.id}`} className="font-display text-[clamp(2.4rem,5vw,4.6rem)] leading-[0.88] tracking-wide text-bone">
               {project.title}
             </motion.h3>
@@ -68,7 +75,9 @@ export default function ProjectCard({ project, index, onOpen }: { project: Proje
               ))}
             </div>
             <div className="mt-5 flex flex-wrap items-center gap-3">
-              <span className="flex min-h-11 items-center gap-2 rounded-md bg-bone px-5 text-sm font-bold text-ink transition group-hover:bg-white">▶ View Project</span>
+              <span className="flex min-h-11 items-center gap-2 rounded-md bg-bone px-5 text-sm font-bold text-ink transition group-hover:bg-white">
+                {project.videos && project.videos.length > 0 ? '▶ Watch Videos' : '▶ View Project'}
+              </span>
               {project.github && (
                 <a
                   href={project.github}

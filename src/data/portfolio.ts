@@ -77,10 +77,11 @@ export type Project = {
   metrics: Metric[];
   image?: string;
   coverImage?: string;
+  videos?: { title: string; src: string; poster?: string }[];
   github?: string;
   live?: string;
   palette: Palette;
-  motif?: 'shield' | 'flow' | 'tenants';
+  motif?: 'shield' | 'flow' | 'tenants' | 'reel';
   telemetry: {
     latency?: string;
     stack?: string;
@@ -315,31 +316,157 @@ export const projects: Project[] = [
     },
   },
   {
-    id: 'video-editing-reel',
-    title: 'Video Editing & Visual Design',
+    id: 'client-commercial-edits',
+    title: 'Commercial & Client Product Reels',
     year: '2026',
-    genre: 'Video Editing • AI Tools • Visual Design',
-    logline: 'Personal video edits made with CapCut and AI-powered tools, with ongoing exploration of color grading and visual design in Figma.',
-    image: '/assets/portrait.jpg',
-    stack: ['CapCut', 'AI Editing Tools', 'Color Grading', 'Figma'],
+    genre: 'Commercial Video Editing • Product Promo • Motion Cuts',
+    logline: 'High-impact commercial video edits and product promotional reels crafted for brands, featuring rhythmic jump cuts, dynamic motion graphics, and crisp audio syncing.',
+    image: '/assets/client_commercials_cover.jpg',
+    coverImage: '/assets/client_commercials_cover.jpg',
+    videos: [
+      { title: 'Client Product Showcase — Feature Spotlight', src: '/assets/videos/client_p/lv_0_20261005095602.mp4', poster: '/assets/videos/client_p/lv_0_20261005095602.jpg' },
+      { title: 'Client Product Showcase — Dynamic Overview', src: '/assets/videos/client_p/lv_0_20261005120436.mp4', poster: '/assets/videos/client_p/lv_0_20261005120436.jpg' },
+      { title: 'Client Commercial Promo — Brand Edit 01', src: '/assets/videos/clients_product/lv_0_20261007095600.mp4', poster: '/assets/videos/clients_product/lv_0_20261007095600.jpg' },
+      { title: 'Client Commercial Promo — Fast-Paced Cut', src: '/assets/videos/clients_product/lv_0_20261009190809.mp4', poster: '/assets/videos/clients_product/lv_0_20261009190809.jpg' },
+      { title: 'Client Commercial Promo — Product Spotlight', src: '/assets/videos/clients_product/lv_0_20261014091213.mp4', poster: '/assets/videos/clients_product/lv_0_20261014091213.jpg' },
+    ],
+    stack: ['CapCut Pro', 'DaVinci Resolve', 'Commercial Pacing', 'Sound Design', 'Color Grading'],
     build: [
-      'Edited personal videos using CapCut and AI-powered editing tools.',
-      'Explored color grading and created visual designs with Figma.',
+      'Edited high-energy commercial promo reels and client product showcases with frame-accurate cuts and speed ramping.',
+      'Balanced voiceover and ambient audio stems with rhythmic sound effects and punchy transition cues.',
+      'Optimized vertical 9:16 and social formats for maximum audience retention and engagement.',
     ],
     features: [
-      'Video editing with CapCut',
-      'AI-assisted editing workflows',
-      'Color-grading exploration',
-      'Visual design with Figma',
+      'Dynamic client product presentation and feature highlights',
+      'Rhythmic audio synchronization and speed ramping',
+      'Vibrant color grading and contrast tuning',
+      'Fast-paced commercial cuts tailored for digital marketing',
     ],
     metrics: [
-      { value: 'CapCut', label: 'video editing' },
-      { value: 'Figma', label: 'visual design' },
+      { value: '5 Reels', label: 'client commercial edits' },
+      { value: 'CapCut & DaVinci', label: 'post-production toolchain' },
+      { value: 'High Retention', label: 'pacing & sound design' },
+    ],
+    palette: silver,
+    motif: 'reel',
+    telemetry: {
+      role: 'Commercial Video Editor & Colorist',
+      stack: 'CapCut Pro • DaVinci Resolve • Sound Design',
+      resolution: '1080p Full HD',
+      fps: '60 FPS',
+    },
+  },
+  {
+    id: 'video-editing-reel',
+    title: 'Educational Content & Visual Design',
+    year: '2026',
+    genre: 'Educational Content Creation • Technical Explainer • Motion Graphics',
+    logline: 'Educational video content crafted with CapCut and AI-powered editing tools, integrating visual hierarchy, smart subtitles, and Figma-designed graphics for clear student comprehension.',
+    image: '/assets/edu_content_cover.jpg',
+    coverImage: '/assets/edu_content_cover.jpg',
+    videos: [
+      { title: 'Educational Content Video — Fundamentals & Concepts (Oct 9, 2026)', src: '/assets/videos/Edu_content/VID_20261009_193557.mp4', poster: '/assets/videos/Edu_content/VID_20261009_193557.jpg' },
+      { title: 'Educational Content Video — In-Depth Tutorial Session (Oct 16, 2026)', src: '/assets/videos/Edu_content/VID_20261016_110141_911.mp4', poster: '/assets/videos/Edu_content/VID_20261016_110141_911.jpg' },
+    ],
+    stack: ['CapCut', 'AI Editing Tools', 'Color Grading', 'Figma', 'Visual Hierarchy'],
+    build: [
+      'Structured complex technical explanations into engaging, bite-sized video lessons for student audiences.',
+      'Integrated AI-assisted editing workflows, smart captions, and visual emphasis highlights.',
+      'Explored color grading workflows and produced companion visual assets in Figma.',
+    ],
+    features: [
+      'Bilingual clarity and structured visual presentation',
+      'AI-assisted captioning and cut refinement',
+      'Color-graded visuals and Figma-designed layout graphics',
+      'Audience retention techniques for technical content',
+    ],
+    metrics: [
+      { value: '2 Lessons', label: 'educational tutorial videos' },
+      { value: 'AI Tools', label: 'accelerated editing pipeline' },
+      { value: 'CapCut', label: 'precision cutting' },
     ],
     palette: monochrome2,
+    motif: 'reel',
     telemetry: {
-      role: 'Video Editing & Visual Design',
+      role: 'Content Creator & Video Editor',
       stack: 'CapCut • AI Editing Tools • Figma',
+      resolution: '1080p',
+      fps: '30/60 FPS',
+    },
+  },
+  {
+    id: 'cinematic-travel-edits',
+    title: 'Cinematic Travel & Storytelling Edits',
+    year: '2026',
+    genre: 'Cinematic Storytelling • Travelogue • Ambient Audio',
+    logline: 'Atmospheric travel films and cinematic reels capturing scenic journeys, natural landscapes, and ambient soundscapes with rhythm-matched cuts, smooth transitions, and color grading.',
+    image: '/assets/trip_travel_cover.jpg',
+    coverImage: '/assets/trip_travel_cover.jpg',
+    videos: [
+      { title: 'Cinematic Travel Reel — Scenic Journey Teaser', src: '/assets/videos/Trip/VID_20260322_125408_743.mp4', poster: '/assets/videos/Trip/VID_20260322_125408_743.jpg' },
+      { title: 'The Travelogue — Full Cinematic Journey & Ambient Cuts', src: '/assets/videos/Trip/VID-20260329-WA0003.mp4', poster: '/assets/videos/Trip/VID-20260329-WA0003.jpg' },
+    ],
+    stack: ['CapCut', 'Cinematic Color Grading', 'Ambient Audio Design', 'Rhythmic Cuts'],
+    build: [
+      'Edited scenic journey footage with atmospheric pacing, slow-motion transitions, and ambient audio layering.',
+      'Graded travel footage for rich natural tones and cinematic dynamic range.',
+      'Synchronized visual transitions to ambient audio beats and environmental soundscapes.',
+    ],
+    features: [
+      'Cinematic pacing synchronized to ambient audio and musical beats',
+      'Natural light color grading and contrast balancing',
+      'B-roll layering and seamless transition design',
+      'Scenic storytelling capturing road journeys and landscapes',
+    ],
+    metrics: [
+      { value: '2 Films', label: 'cinematic travel reels' },
+      { value: 'Ambient Audio', label: 'sound design & atmosphere' },
+      { value: 'Cinematic', label: 'color graded visual style' },
+    ],
+    palette: monochrome3,
+    motif: 'reel',
+    telemetry: {
+      role: 'Cinematic Editor & Colorist',
+      stack: 'CapCut • Color Grading • Audio Design',
+      resolution: '1080p',
+      fps: '30/60 FPS',
+    },
+  },
+  {
+    id: 'ai-content-creation',
+    title: 'AI Content & Generative Video Edits',
+    year: '2026',
+    genre: 'Generative AI • Prompt Engineering • Visual Motion',
+    logline: 'Creative AI-generated video content and prompt-engineered visual reels, blending cutting-edge generative models with CapCut post-production and rhythmic sound design.',
+    image: '/assets/ai_content_cover.jpg',
+    coverImage: '/assets/ai_content_cover.jpg',
+    videos: [
+      { title: 'AI Motion & Generative Visual Sequence', src: '/assets/videos/AI_content/lv_0_20261017002756.mp4', poster: '/assets/videos/AI_content/lv_0_20261017002756.jpg' },
+      { title: 'AI Concept Video & Prompt Workflow Demo', src: '/assets/videos/AI_content/VID_20261016_110120_621.mp4', poster: '/assets/videos/AI_content/VID_20261016_110120_621.jpg' },
+    ],
+    stack: ['Generative AI', 'CapCut', 'Prompt Engineering', 'Motion Design', 'Color Grading'],
+    build: [
+      'Directed and curated synthetic video sequences with iterative prompt engineering for visual consistency.',
+      'Executed post-production color balancing, rhythmic cut timing, and synchronized sound design.',
+    ],
+    features: [
+      'Generative video prompt design and cinematic storytelling',
+      'Frame-accurate speed ramping and cut rhythm',
+      'Multi-model AI exploration with CapCut refinement',
+      'Sound-synchronized generative motion',
+    ],
+    metrics: [
+      { value: '2 Reels', label: 'AI video productions' },
+      { value: 'GenAI Tools', label: 'prompt-to-video workflow' },
+      { value: 'Post-Prod', label: 'color & sound mastered' },
+    ],
+    palette: silver,
+    motif: 'reel',
+    telemetry: {
+      role: 'AI Video Creator & Prompt Editor',
+      stack: 'Generative AI • CapCut • Motion Design',
+      resolution: '1080p',
+      fps: '30/60 FPS',
     },
   },
   {
@@ -888,6 +1015,7 @@ export const topPicks: TopPick[] = [
   { label: '12th Grade 89% Honor', title: 'Outstanding Student', detail: 'Academic honor and separate Outstanding Student award', palette: monochrome2 },
   { label: 'Declamation Champion', title: '1st Place Declamation', detail: 'Conversa English Academy & Azad Foundation at Islamia School', palette: silver },
   { label: 'ThinkNEXT AI & ML', title: 'Jarvis AI Assistant', detail: 'AI and machine-learning project built during Grade A training', palette: silver },
+  { label: 'Video Production', title: 'Commercial & Cinematic Reels', detail: 'Commercial client promos, educational tutorials & travel films', palette: monochrome2 },
 ];
 
 export type IntroSlide = { kicker: string; title: string; lines: string[]; chips?: string[] };
@@ -908,8 +1036,11 @@ export const introSlides: IntroSlide[] = [
   {
     kicker: 'The Creative Craft',
     title: 'Video Editing & Visual Design',
-    lines: ['Editing videos with CapCut and AI-powered tools', 'Exploring color grading and creating designs in Figma'],
-    chips: ['CapCut', 'AI Editing Tools', 'Color Grading', 'Figma'],
+    lines: [
+      'Commercial product showcases, educational tutorials & cinematic travel films',
+      'CapCut, AI-powered tools, dynamic pacing, color grading & audio leveling',
+    ],
+    chips: ['CapCut', 'Commercial Reels', 'EdTech Content', 'Cinematic Travel', 'Color Grading'],
   },
   {
     kicker: 'Originals',
@@ -988,9 +1119,20 @@ export const roleResumePdfs: Record<ProfileId, RoleResumePdfInfo> = {
 };
 
 export function getProjectsForProfile(profileId: ProfileId): Project[] {
-  if (profileId === 'developer') return projects.filter((project) => !['video-editing-reel', 'smart-traffic-speaking'].includes(project.id));
-  if (profileId === 'creative') return projects.filter((project) => project.id === 'video-editing-reel');
-  if (profileId === 'speaker') return projects.filter((project) => project.id === 'smart-traffic-speaking');
+  if (profileId === 'developer') {
+    return projects.filter(
+      (project) =>
+        !['client-commercial-edits', 'video-editing-reel', 'cinematic-travel-edits', 'ai-content-creation', 'smart-traffic-speaking'].includes(project.id)
+    );
+  }
+  if (profileId === 'creative') {
+    return projects.filter((project) =>
+      ['client-commercial-edits', 'ai-content-creation', 'video-editing-reel', 'cinematic-travel-edits'].includes(project.id)
+    );
+  }
+  if (profileId === 'speaker') {
+    return projects.filter((project) => project.id === 'smart-traffic-speaking');
+  }
   return projects;
 }
 
@@ -1364,10 +1506,10 @@ export const skillEvidence: Record<string, string[]> = {
   'Supabase': ['Shudh Loha Business Site', 'Track Expenser'],
   'C++': ['Arya College Tech Disha (3rd Prize in C)', 'IETE Code Debugging (3rd Place)', 'THINK-A-THON 2026'],
   'Python': ['ThinkNEXT Industrial Training (Grade A)', 'Infosys Python Foundation (Capstone)', 'Infosys Python Part 1 & 2', 'Data Science & Automation'],
-  'Video Editing': ['Cinematic Motion Suite', '4K Commercial Reels'],
-  'Color Grading': ['DaVinci Resolve Studio', 'ACES Color Management'],
+  'Video Editing': ['Commercial & Client Product Reels', 'AI Content & Generative Video Edits', 'Educational Content & Visual Design', 'Cinematic Travel & Storytelling Edits', 'CapCut & DaVinci Resolve'],
+  'Color Grading': ['Commercial Client Product Reels', 'Cinematic Travelogue Reels', 'DaVinci Resolve & CapCut Studio'],
   'Figma UI/UX': ['ZID Fitness Zone', 'RE:BRAND Strategy Challenge', 'Modern Wireframes'],
-  'Sound Design': ['Foley Layering', 'Audio Stem Balancing'],
+  'Sound Design': ['Commercial Audio Balancing', 'Ambient Travel Audio Layering', 'Voiceover & Foley Sync'],
   'Technical Presentation': ['Declamation Contest 1st Position (Conversa)', 'GNDEC 68th Foundation Day Stage Honor', 'Smart Traffic Management Ideathon', 'RE:BRAND Pitch Presentation', 'Declamation Contest 2nd Position', 'All India Lohar Trust Honours Ceremony'],
   'Analytical Thinking': ['CML Case Study 2nd Position', 'Arya College 3rd Prize C Debugging', 'THINK-A-THON 2026 Hackathon', 'J-PAL Digital Wellness Study', 'IETE Code Debugging'],
   'Communication': ['Declamation Contest 1st Position (Conversa English Academy)', 'Declamation Contest 2nd Position (Awake Foundation)', 'GNDEC 68th Foundation Day Stage Honor', 'Alma Mater Excellence Shield', 'English, Hindi, Punjabi Fluency'],

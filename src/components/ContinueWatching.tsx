@@ -15,7 +15,7 @@ const FOCUSED_META: Partial<Record<ProfileId, Partial<Record<SectionId, readonly
     skills: ['Coding Skills', '3 engineering categories'],
   },
   creative: {
-    originals: ['Editing Reel', '1 video editing project'],
+    originals: ['Video Showcase', '4 video editing projects'],
     skills: ['Video Skills', 'Editing & creative'],
   },
   speaker: {

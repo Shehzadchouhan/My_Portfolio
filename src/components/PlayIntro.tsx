@@ -24,7 +24,22 @@ function slidesForProfile(profileId: ProfileId): IntroSlide[] {
     ];
   }
   if (profileId === 'creative') {
-    return introSlides.filter((slide) => slide.kicker === 'The Creative Craft');
+    return [
+      {
+        kicker: 'The Creative Craft',
+        title: 'Video Editing & Visual Direction',
+        lines: [
+          'Commercial product showcases, educational tutorials & cinematic travel films',
+          'Rhythmic pacing, color grading, sound design, and Figma graphics using CapCut & AI tools',
+        ],
+        chips: ['CapCut', 'Commercial Reels', 'AI Video', 'EdTech Content', 'Cinematic Travel'],
+      },
+      {
+        kicker: 'Featured Video Projects',
+        title: 'Video Projects & Showcases',
+        lines: getProjectsForProfile(profileId).map((project) => `${project.title} — ${project.genre}`),
+      },
+    ];
   }
   if (profileId === 'speaker') {
     return [

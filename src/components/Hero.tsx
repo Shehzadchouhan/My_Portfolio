@@ -39,14 +39,14 @@ const FOCUSED_CONTENT: Partial<
   },
   creative: {
     badge: 'VIDEO EDITING & VISUAL DESIGN',
-    meta: ['CapCut', 'AI Editing Tools'],
-    tagline: ['Video Editing', 'Color Grading', 'Figma'],
-    intro: 'I edit videos using CapCut and AI-powered tools, explore color grading, and create visual designs in Figma.',
-    action: 'View Reel',
+    meta: [`${getProjectsForProfile('creative').length} Video Projects`, 'Commercial · AI Content · EdTech · Cinematic'],
+    tagline: ['Commercial Edits', 'AI Generative Video', 'Cinematic & EdTech'],
+    intro: 'Video editor crafting commercial client product promos, AI-generated content reels, educational tutorials, and cinematic travel films using CapCut, generative AI tools, and rhythmic sound design.',
+    action: 'Watch Video Projects',
     floating: [
-      { text: 'CapCut', sub: 'Video Editing', pos: 'left-[2%] top-[30%]', depth: 1 },
-      { text: 'AI Editing Tools', sub: 'AI-Assisted Workflows', pos: 'right-[0%] top-[18%]', depth: -1 },
-      { text: 'Figma · Color Grading', sub: 'Visual Design', pos: 'right-[4%] bottom-[24%]', depth: 0.6 },
+      { text: 'Commercial & Products', sub: 'Dynamic Pacing & Cuts', pos: 'left-[2%] top-[30%]', depth: 1 },
+      { text: 'CapCut & DaVinci', sub: 'Color Grading & Audio', pos: 'right-[0%] top-[18%]', depth: -1 },
+      { text: 'Generative AI Videos', sub: 'Prompt to Motion', pos: 'right-[4%] bottom-[24%]', depth: 0.6 },
     ],
   },
   speaker: {

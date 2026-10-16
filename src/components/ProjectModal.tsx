@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { getProjectsForProfile, projects, type ProfileId, type Project } from '../data/portfolio';
+import { getProjectsForProfile, profile, projects, type ProfileId, type Project } from '../data/portfolio';
 import { useScrollLock } from '../hooks/smoothScroll';
 import { EASE, Magnetic } from './fx';
 import { ProjectArt } from './Poster';
@@ -91,6 +91,24 @@ export default function ProjectModal({ project, onClose, onSwitch, profileId }: 
               {project.logline}
             </motion.p>
 
+            {project.videos && project.videos.length > 0 && (
+              <motion.section variants={block} className="mt-10">
+                <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-[11px] font-bold uppercase tracking-[0.3em] text-crimson-2">
+                    {project.genre ? `${project.genre.split('•')[0].trim()} · Video Showcase` : 'Video Showcase'} ({project.videos.length})
+                  </h3>
+                  <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-emerald-400">
+                    🔊 Stereo AAC Sound Mastered
+                  </span>
+                </div>
+                <div className="grid gap-5 md:grid-cols-2">
+                  {project.videos.map((video) => (
+                    <VideoItem key={video.src} video={video} />
+                  ))}
+                </div>
+              </motion.section>
+            )}
+
             {(project.github || project.live) && (
               <motion.div variants={block} className="mt-6 flex flex-wrap gap-3">
                 {project.github && (
@@ -119,6 +137,33 @@ export default function ProjectModal({ project, onClose, onSwitch, profileId }: 
                     </a>
                   </Magnetic>
                 )}
+              </motion.div>
+            )}
+
+            {project.videos && project.videos.length > 0 && !project.github && (
+              <motion.div variants={block} className="mt-6 flex flex-wrap gap-3">
+                {profile.links.instagram && (
+                  <Magnetic>
+                    <a
+                      href={profile.links.instagram}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="link"
+                      className="flex min-h-12 items-center gap-2 rounded-md bg-bone px-6 text-[15px] font-bold text-ink transition hover:bg-white"
+                    >
+                      <span>▶</span> More Reels on Instagram ↗
+                    </a>
+                  </Magnetic>
+                )}
+                <Magnetic>
+                  <a
+                    href={`mailto:${profile.email}?subject=${encodeURIComponent(`Video Editing Inquiry — ${project.title}`)}`}
+                    data-cursor="link"
+                    className="flex min-h-12 items-center gap-2 rounded-md border border-white/25 px-6 text-[15px] font-bold text-bone transition hover:border-bone"
+                  >
+                    <span>✉</span> Inquire for Video Editing ↗
+                  </a>
+                </Magnetic>
               </motion.div>
             )}
 
@@ -209,3 +254,213 @@ export default function ProjectModal({ project, onClose, onSwitch, profileId }: 
     </motion.div>
   );
 }
+
+function VideoItem({ video }: { video: { title: string; src: string; poster?: string } }) {
+  const vidRef = useRef<HTMLVideoElement>(null);
+  const [volume, setVolume] = useState(1.0);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    if (vidRef.current) {
+      vidRef.current.muted = false;
+      vidRef.current.volume = 1.0;
+    }
+  }, [video.src]);
+
+  const handleVolumeChange = (newVol: number) => {
+    const clamped = Math.max(0, Math.min(1, newVol));
+    setVolume(clamped);
+    if (!vidRef.current) return;
+    vidRef.current.volume = clamped;
+    if (clamped > 0) {
+      vidRef.current.muted = false;
+      setIsMuted(false);
+    } else {
+      vidRef.current.muted = true;
+      setIsMuted(true);
+    }
+  };
+
+  const toggleMute = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!vidRef.current) return;
+    if (isMuted || volume === 0) {
+      const restoreVol = volume > 0 ? volume : 1.0;
+      vidRef.current.muted = false;
+      vidRef.current.volume = restoreVol;
+      setVolume(restoreVol);
+      setIsMuted(false);
+    } else {
+      vidRef.current.muted = true;
+      setIsMuted(true);
+    }
+  };
+
+  const maxVolume = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (!vidRef.current) return;
+    vidRef.current.muted = false;
+    vidRef.current.volume = 1.0;
+    setVolume(1.0);
+    setIsMuted(false);
+    if (vidRef.current.paused) {
+      vidRef.current.play().catch(() => {});
+    }
+  };
+
+  const displayVol = isMuted ? 0 : volume;
+
+  return (
+    <figure className="group/video relative overflow-hidden rounded-xl bg-ink ring-1 ring-white/10 transition-all hover:ring-white/25">
+      <div className="relative aspect-video w-full bg-black">
+        <video
+          ref={vidRef}
+          className="h-full w-full object-contain"
+          src={video.src}
+          poster={video.poster}
+          controls
+          playsInline
+          preload="metadata"
+          aria-label={video.title}
+          onLoadedMetadata={(e) => {
+            const v = e.currentTarget;
+            v.muted = false;
+            v.volume = 1.0;
+            setVolume(1.0);
+            setIsMuted(false);
+          }}
+          onPlay={(e) => {
+            const v = e.currentTarget;
+            if (!isMuted) {
+              v.muted = false;
+              v.volume = volume > 0 ? volume : 1.0;
+            }
+            setIsPlaying(true);
+          }}
+          onPause={() => setIsPlaying(false)}
+          onVolumeChange={(e) => {
+            const v = e.currentTarget;
+            setIsMuted(v.muted || v.volume === 0);
+            if (!v.muted && v.volume > 0) {
+              setVolume(v.volume);
+            }
+          }}
+        />
+
+        {/* Top-Left: Active Audio Equalizer Waveform Pill */}
+        <div className="pointer-events-none absolute left-3 top-3 z-10 flex items-center gap-2">
+          {isPlaying && !isMuted && volume > 0 ? (
+            <span className="flex items-center gap-2 rounded-full border border-emerald-500/30 bg-black/80 px-2.5 py-1 text-[11px] font-semibold text-emerald-400 shadow-lg backdrop-blur">
+              <span className="flex h-3 items-end gap-0.5">
+                <span className="eq-bar-1 h-full w-1 rounded-full bg-emerald-400" />
+                <span className="eq-bar-2 h-full w-1 rounded-full bg-emerald-400" />
+                <span className="eq-bar-3 h-full w-1 rounded-full bg-emerald-400" />
+                <span className="eq-bar-4 h-full w-1 rounded-full bg-emerald-400" />
+              </span>
+              <span>Audio Active</span>
+            </span>
+          ) : isPlaying && (isMuted || volume === 0) ? (
+            <span className="flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-black/80 px-2.5 py-1 text-[11px] font-semibold text-amber-400 shadow-lg backdrop-blur">
+              <span>🔇</span>
+              <span>Sound Muted</span>
+            </span>
+          ) : null}
+        </div>
+
+        {/* Top-Right: Quick Sound Status & Toggle Pill */}
+        <button
+          type="button"
+          onClick={toggleMute}
+          data-cursor="click"
+          aria-label={isMuted ? 'Turn Sound On' : 'Mute Sound'}
+          className={`absolute right-3 top-3 z-20 flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold backdrop-blur transition-all shadow-md ${
+            isMuted || volume === 0
+              ? 'bg-crimson text-white shadow-crimson/40 hover:scale-105'
+              : 'border border-white/15 bg-black/80 text-bone hover:bg-black'
+          }`}
+        >
+          <span>{isMuted || volume === 0 ? '🔇' : volume > 0.5 ? '🔊' : '🔉'}</span>
+          <span>{isMuted || volume === 0 ? 'Muted — Click to Unmute' : `${Math.round(displayVol * 100)}% Volume`}</span>
+        </button>
+
+        {/* Prominent floating unmute banner if video is actively playing muted */}
+        {isPlaying && (isMuted || volume === 0) && (
+          <button
+            type="button"
+            onClick={maxVolume}
+            data-cursor="click"
+            aria-label="Tap to unmute sound at 100%"
+            className="absolute inset-x-4 bottom-14 z-20 mx-auto flex max-w-max items-center gap-2 rounded-full bg-emerald-400 px-4 py-2 text-xs font-bold text-black shadow-xl backdrop-blur transition-all hover:scale-105 hover:bg-emerald-300"
+          >
+            <span>🔊</span>
+            <span>Video is Playing Muted — Tap for 100% Sound</span>
+          </button>
+        )}
+      </div>
+
+      {/* Visible Audio & Media Deck */}
+      <figcaption className="space-y-3 border-t border-white/5 bg-ink-2/95 p-4">
+        <div className="flex items-center justify-between gap-2">
+          <span className="truncate text-sm font-semibold text-bone">{video.title}</span>
+          {isPlaying && !isMuted && volume > 0 ? (
+            <span className="flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-emerald-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-ping" />
+              Stereo AAC 48kHz
+            </span>
+          ) : (
+            <span className="shrink-0 text-[11px] text-mist">Mastered Audio</span>
+          )}
+        </div>
+
+        {/* Interactive Audio Controls Bar */}
+        <div className="flex items-center gap-3 rounded-lg border border-white/10 bg-black/40 p-2.5">
+          {/* Mute/Unmute toggle button */}
+          <button
+            type="button"
+            onClick={toggleMute}
+            data-cursor="click"
+            aria-label={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-white/10 text-sm text-bone transition hover:bg-white/20"
+          >
+            {isMuted || volume === 0 ? '🔇' : volume > 0.5 ? '🔊' : '🔉'}
+          </button>
+
+          {/* Interactive Volume Slider */}
+          <div className="flex flex-1 items-center gap-2">
+            <span className="shrink-0 text-[11px] font-bold tracking-wider text-mist">VOL</span>
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.02"
+              aria-label={`${video.title} Volume Slider`}
+              value={displayVol}
+              onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+              style={{
+                background: `linear-gradient(to right, #46e3a8 0%, #46e3a8 ${displayVol * 100}%, rgba(255, 255, 255, 0.15) ${displayVol * 100}%, rgba(255, 255, 255, 0.15) 100%)`,
+              }}
+              className="audio-slider h-2 w-full flex-1"
+            />
+            <span className="w-12 text-right font-mono text-xs font-bold text-bone">
+              {isMuted || volume === 0 ? '0%' : `${Math.round(displayVol * 100)}%`}
+            </span>
+          </div>
+
+          {/* 100% Max Volume Button */}
+          <button
+            type="button"
+            onClick={maxVolume}
+            data-cursor="click"
+            aria-label="Set volume to maximum 100%"
+            className="shrink-0 rounded border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-bold text-emerald-400 transition hover:bg-emerald-500/20"
+          >
+            100% Max
+          </button>
+        </div>
+      </figcaption>
+    </figure>
+  );
+}
+
+

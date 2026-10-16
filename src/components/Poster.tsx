@@ -96,6 +96,18 @@ export function ProjectArt({ project, className = '' }: { project: Project; clas
             <path d="M188 228 h190" strokeWidth="1" strokeOpacity="0.2" />
           </g>
         )}
+        {project.motif === 'reel' && (
+          <g fill="none" stroke={a}>
+            <rect x="180" y="55" width="170" height="110" rx="14" strokeWidth="2" strokeOpacity="0.85" />
+            <polygon points="252,90 252,130 286,110" fill={a} fillOpacity="0.85" stroke="none" />
+            <circle cx="210" cy="85" r="10" strokeWidth="1.5" strokeOpacity="0.5" />
+            <circle cx="210" cy="135" r="10" strokeWidth="1.5" strokeOpacity="0.5" />
+            <circle cx="320" cy="85" r="10" strokeWidth="1.5" strokeOpacity="0.5" />
+            <circle cx="320" cy="135" r="10" strokeWidth="1.5" strokeOpacity="0.5" />
+            <path d="M180 185 h170" strokeWidth="2" strokeOpacity="0.7" strokeDasharray="8 6" />
+            <path d="M180 200 h170" strokeWidth="1" strokeOpacity="0.35" />
+          </g>
+        )}
       </svg>
     </PosterBackdrop>
   );

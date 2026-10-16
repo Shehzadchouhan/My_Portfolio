@@ -14,8 +14,8 @@ export default function Originals({ onOpen, profileId }: { onOpen: (p: Project) 
   const reduced = useReducedMotionPref();
   const visibleProjects = getProjectsForProfile(profileId);
   return desktop && !reduced
-    ? <PinnedOriginals onOpen={onOpen} entries={visibleProjects} />
-    : <RailOriginals onOpen={onOpen} entries={visibleProjects} />;
+    ? <PinnedOriginals onOpen={onOpen} entries={visibleProjects} profileId={profileId} />
+    : <RailOriginals onOpen={onOpen} entries={visibleProjects} profileId={profileId} />;
 }
 
 function Intro({ entries }: { entries: Project[] }) {
@@ -33,7 +33,39 @@ function Intro({ entries }: { entries: Project[] }) {
   );
 }
 
-function Outro() {
+function Outro({ profileId }: { profileId: ProfileId }) {
+  if (profileId === 'creative') {
+    return (
+      <a
+        href={profile.links.instagram}
+        target="_blank"
+        rel="noreferrer"
+        data-cursor="link"
+        className="group flex aspect-[3/4] w-[70vw] shrink-0 snap-start flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-white/15 text-center transition hover:border-crimson-2/60 sm:w-[44vw] lg:aspect-auto lg:h-[66vh] lg:w-[24vw]"
+      >
+        <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 text-2xl text-bone transition group-hover:scale-110 group-hover:border-crimson-2 group-hover:text-crimson-2">▶</span>
+        <span className="font-display text-3xl tracking-wide text-bone">More Reels & Edits</span>
+        <span className="text-xs text-mist">@shehzad_speaks on Instagram ↗</span>
+      </a>
+    );
+  }
+
+  if (profileId === 'speaker') {
+    return (
+      <a
+        href={profile.links.linkedin}
+        target="_blank"
+        rel="noreferrer"
+        data-cursor="link"
+        className="group flex aspect-[3/4] w-[70vw] shrink-0 snap-start flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-white/15 text-center transition hover:border-crimson-2/60 sm:w-[44vw] lg:aspect-auto lg:h-[66vh] lg:w-[24vw]"
+      >
+        <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/25 text-2xl text-bone transition group-hover:scale-110 group-hover:border-crimson-2 group-hover:text-crimson-2">↗</span>
+        <span className="font-display text-3xl tracking-wide text-bone">More on LinkedIn</span>
+        <span className="text-xs text-mist">linkedin.com/in/shehzad23 ↗</span>
+      </a>
+    );
+  }
+
   return (
     <a
       href={profile.links.github}
@@ -49,7 +81,7 @@ function Outro() {
   );
 }
 
-function PinnedOriginals({ onOpen, entries }: { onOpen: (p: Project) => void; entries: Project[] }) {
+function PinnedOriginals({ onOpen, entries, profileId }: { onOpen: (p: Project) => void; entries: Project[]; profileId: ProfileId }) {
   const wrap = useRef<HTMLDivElement>(null);
   const track = useRef<HTMLDivElement>(null);
   const [dist, setDist] = useState(0);
@@ -86,7 +118,7 @@ function PinnedOriginals({ onOpen, entries }: { onOpen: (p: Project) => void; en
           {entries.map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i} onOpen={() => onOpen(p)} />
           ))}
-          <Outro />
+          <Outro profileId={profileId} />
         </motion.div>
         <div className="gutter absolute inset-x-0 bottom-8 flex items-center gap-4">
           <span className="text-[10px] font-bold tracking-[0.3em] text-smoke">ORIGINALS</span>
@@ -99,7 +131,7 @@ function PinnedOriginals({ onOpen, entries }: { onOpen: (p: Project) => void; en
   );
 }
 
-function RailOriginals({ onOpen, entries }: { onOpen: (p: Project) => void; entries: Project[] }) {
+function RailOriginals({ onOpen, entries, profileId }: { onOpen: (p: Project) => void; entries: Project[]; profileId: ProfileId }) {
   return (
     <div className="py-6">
       <div className="gutter mb-6">
@@ -115,7 +147,7 @@ function RailOriginals({ onOpen, entries }: { onOpen: (p: Project) => void; entr
         {entries.map((p, i) => (
           <ProjectCard key={p.id} project={p} index={i} onOpen={() => onOpen(p)} />
         ))}
-        <Outro />
+        <Outro profileId={profileId} />
       </motion.div>
     </div>
   );
